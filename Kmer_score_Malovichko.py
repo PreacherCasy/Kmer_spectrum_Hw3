@@ -67,10 +67,11 @@ class Kmer_spectrum:
         plt.title(f'Kmer spectrum (k={self.k}, q={self.q})')
 
         df = self.grid
-        df['Number'].plot(logy=True)
+        df['Frequency'].plot(logy=True)
         plt.ylabel('Frequency')
         plt.xlabel('Number of kmers')
 
+        plt.axvline(x=self.baseline, color='r')
 
         plt.axis(ax)
         if o:
@@ -78,7 +79,13 @@ class Kmer_spectrum:
 
         plt.show()
 
-
+def finalize(file, k, q, b):
+    spectrum = Kmer_spectrum(file)
+    spectrum.library_walking(k, q)
+    spectrum.array_builder()
+    spectrum.genome_size_est(b)
+    spectrum.visualize()
+    return spectrum.G, '\n', spectrum.baseline
 
 
 
@@ -95,15 +102,8 @@ if __name__ == '__main__':
     o = args.output
     k = args.kmer
     q = args.quality
+    b = args.baseline
 
 
-    def finalize(file, k, q):
-        spectrum = Kmer_spectrum(file)
-        spectrum.library_walking(k, q)
-        spectrum.array_builder()
-        spectrum.genome_size_est(o)
-        spectrum.visualize()
-        return spectrum.G, '\n', spectrum.baseline
 
-    print(finalize(inp, k, q))
-    #a = finalize('/home/reverend_casy/Downloads/test_kmer.fastq', 15, 35)
+    print(finalize(inp, k, q, b))
