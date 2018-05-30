@@ -26,7 +26,10 @@ The CL arguments used are:
 - **-o**: a name for output *png* picture
 
 ## Example
-
+A test run has been performed onto a fastq sample provided by Euegene Bakin:
+```
+python Kmer_score_Malovichko.py -i test_kmer.fastq -k 15 -q 35 -o Test_sample
+```
 Estimated genome size in this case is 6441648 bases or 6.4 Mb.
 
 ## Acknowledgements
