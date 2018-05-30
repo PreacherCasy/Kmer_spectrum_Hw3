@@ -22,11 +22,12 @@ The CL arguments used are:
 - **-i**: an input *fastq* file;
 - **-k**: a size of kmer;
 - **-q**: a quality baseline; all kmrs with PHRED quality beyond this minimum will be omitted;
+- **-b**: a custom quality baseline. If none, **noise_eraser** will be launched and its result will be used as a baseline;
 - **-o**: a name for output *png* picture
 
 ## Example
 
-Estimated genome size in this case is
+Estimated genome size in this case is 6441648 bases or 6.4 Mb.
 
 ## Acknowledgements
 Eugene Bakin of Bioinformatics Institute for his Python crash course
